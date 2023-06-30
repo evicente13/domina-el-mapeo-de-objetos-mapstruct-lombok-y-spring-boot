@@ -2,10 +2,7 @@ package com.cazadordigital.mapstructlombokdemo.mapper;
 
 import com.cazadordigital.mapstructlombokdemo.dto.GetProduct;
 import com.cazadordigital.mapstructlombokdemo.entity.Product;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {
@@ -16,4 +13,7 @@ public interface ProductMapper {
     })
 
     GetProduct toGetDTO(Product product);
+
+    @InheritInverseConfiguration
+    Product toEntity(GetProduct getProduct);
 }
