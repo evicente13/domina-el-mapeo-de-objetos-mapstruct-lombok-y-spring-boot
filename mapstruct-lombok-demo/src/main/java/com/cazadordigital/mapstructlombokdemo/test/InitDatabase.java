@@ -31,10 +31,16 @@ public class InitDatabase {
             //products.forEach(product -> System.out.println(product));
 
             System.out.println("GET PRODUCT");
-            List<GetProduct> getProductList = products
+            /*List<GetProduct> getProductList = products
                     .stream().map(product -> productMapper.toGetDTO(product))
                     .peek(System.out::println)
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList());*/
+            List<GetProduct> getProductList = productMapper.toGetProductList(products);
+            getProductList.forEach(System.out::println);
+
+            System.out.println("MAPPED PRODUCTS");
+            List<Product> mappedProducts = productMapper.toEntityList(getProductList);
+            mappedProducts.forEach(System.out::println);
 
         };
     }

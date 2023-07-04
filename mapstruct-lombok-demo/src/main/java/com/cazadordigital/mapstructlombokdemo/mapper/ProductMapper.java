@@ -4,6 +4,8 @@ import com.cazadordigital.mapstructlombokdemo.dto.GetProduct;
 import com.cazadordigital.mapstructlombokdemo.entity.Product;
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {
 
@@ -16,4 +18,8 @@ public interface ProductMapper {
 
     @InheritInverseConfiguration
     Product toEntity(GetProduct getProduct);
+
+    List<GetProduct> toGetProductList(List<Product> productList);
+
+    List<Product> toEntityList(List<GetProduct> getProductList);
 }
