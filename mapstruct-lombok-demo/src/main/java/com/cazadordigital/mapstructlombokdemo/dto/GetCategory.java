@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class GetCategory {
     private long id;
     private String name;
+
+
 }

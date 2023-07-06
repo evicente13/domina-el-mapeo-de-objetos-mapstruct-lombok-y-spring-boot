@@ -13,4 +13,6 @@ public class GetProduct {
     private long id;
     private String name;
     private String creationDate;
+    private GetCategory category;
+
 }

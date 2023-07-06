@@ -19,6 +19,6 @@ public class Category {
     @Id
     private long id;
     private String name;
-    private boolean status;
+    private Boolean status;
 
 }
