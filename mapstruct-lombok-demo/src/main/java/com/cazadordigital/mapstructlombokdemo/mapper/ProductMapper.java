@@ -15,6 +15,7 @@ public interface ProductMapper {
             @Mapping(source = "name" , target = "productName"),
             @Mapping(source = "id" , target = "productId"),
             @Mapping(source = "category" , target = "productCategory"),
+            @Mapping(source = "price" , target = "price", numberFormat = "$0.00"),
     })
 
     GetProduct toGetDTO(Product product);
