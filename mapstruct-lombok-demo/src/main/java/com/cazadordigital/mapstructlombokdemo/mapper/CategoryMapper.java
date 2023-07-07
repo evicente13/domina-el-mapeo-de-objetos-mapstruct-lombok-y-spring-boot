@@ -4,7 +4,9 @@ import com.cazadordigital.mapstructlombokdemo.dto.GetCategory;
 import com.cazadordigital.mapstructlombokdemo.entity.Category;
 import com.cazadordigital.mapstructlombokdemo.repository.CategoryRepository;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.Mappings;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -14,17 +16,23 @@ public abstract class CategoryMapper {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Mappings({
+            @Mapping(source = "id", target = "categoryId"),
+            @Mapping(source = "name", target = "categoryName"),
+    })
+
     abstract GetCategory toGetCategory(Category category);
 
 
     Category toEntity(GetCategory getCategory){
         if(getCategory == null) return null;
-        Category category = categoryRepository.findById(getCategory.getId())
+        Category category = categoryRepository.findById(getCategory.getCategoryId())
                 .orElse(null);
         if(category == null) return null;
 
-        category.setId(getCategory.getId());
-        category.setName(getCategory.getName());
+        category.setId(getCategory.getCategoryId());
+        category.setName(getCategory.getCategoryName());
 
         return  category;
     }
